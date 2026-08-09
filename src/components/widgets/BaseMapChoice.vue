@@ -128,7 +128,7 @@
 <script setup>
 // vue
 import { ref, watch } from "vue"
-import { switch_annotation_global_visual } from "../../utils/map/basemap_layer.js"
+import { switch_annotation_global_visual } from "@/utils/map/basemap_layer.js"
 
 // 自定义 Props
 defineProps({

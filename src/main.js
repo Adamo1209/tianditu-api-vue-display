@@ -14,8 +14,6 @@ import ServiceTab from "./components/fragments/ServiceTab.vue"
 import AboutTab from "./components/fragments/AboutTab.vue"
 import BaseMapChoice from "./components/widgets/BaseMapChoice.vue"
 
-
-
 // Vue app initialize
 app = createApp(App)
 app.use(ElementPlus)

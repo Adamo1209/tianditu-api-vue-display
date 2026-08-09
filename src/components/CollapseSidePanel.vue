@@ -30,7 +30,7 @@ import { ref } from 'vue'
 import { Menu as IconMenu, MapLocation, Warning } from '@element-plus/icons-vue'
 
 // self
-import { fragment_tab } from "../utils/init.js"
+import { fragment_tab } from "@/utils/init.js"
 
 // 自定义组件 Props
 defineProps(['default_active'])

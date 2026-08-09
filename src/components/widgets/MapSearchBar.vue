@@ -1,15 +1,16 @@
 <template>
     <el-row gutter="10" style="width: 430px;">
-        <el-col :span="8">
+        <el-col :span="9">
             <el-select v-model="select" placeholder="Select" size="large">
                 <el-option label="<请选择>" value="select" />
                 <el-option label="地理编码" value="geocode" />
                 <el-option label="逆地理编码" value="reverse_geocode" />
+                <el-option label="行政区划服务" value="district_service" />
             </el-select>
         </el-col>
-        <el-col :span="16">
+        <el-col :span="15">
             <div v-if="select === 'geocode'">
-                <el-input v-model="address_name" placeholder="输入地址名称" size="large">
+                <el-input v-model="address_name" placeholder="输入地址名称" size="large" clearable>
                     <template #append>
                         <el-button type="primary" @click="geocode(address_name)">
                             查询
@@ -17,7 +18,7 @@
                     </template>
                 </el-input>
             </div>
-            <div v-if="select === 'reverse_geocode'">
+            <div v-else-if="select === 'reverse_geocode'">
                 <el-form :inline="true" :model="latlng_info" size="large">
                     <el-form-item label="纬度">
                         <el-input v-model="latlng_info.lat" placeholder="lat" clearable style="width: 100px;"/>
@@ -32,6 +33,15 @@
                     </el-form-item>
                 </el-form>
             </div>
+            <div v-else-if="select === 'district_service'">
+                <el-input v-model="keyword" placeholder="行政区名称或编码" size="large" clearable>
+                    <template #append>
+                        <el-button type="primary" @click="district_service(keyword)">
+                            查询
+                        </el-button>
+                    </template>
+                </el-input>
+            </div>
             <div v-else>
                 
             </div>
@@ -41,15 +51,17 @@
 
 <script setup>
 // vue
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive } from 'vue'
 
 // self
-import { geocode } from "../../utils/server/geocode.js"
-import { reverse_geocode } from "../../utils/server/reverse_geocode.js"
+import { geocode } from "@/utils/service/geocode.js"
+import { reverse_geocode } from "@/utils/service/reverse_geocode.js"
+import { district_service } from "@/utils/service/district_service.js"
 
 let select = ref("select")
 let address_name = ref("")
 let latlng_info = reactive({lat: null, lng: null})
+let keyword = ref("")
 
 </script>
 
