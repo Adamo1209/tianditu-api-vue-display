@@ -185,8 +185,4 @@ watch([tianditu_3d_a, tianditu_3d_g], ([newAnno, newGlobal]) => {
   background-color: rgb(236, 245, 255);
 }
 
-img {
-    border: black 1px solid;
-}
-
 </style>
