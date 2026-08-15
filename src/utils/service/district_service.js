@@ -1,10 +1,5 @@
 // self
 import { tianditu_key } from "@/utils/init.js"
-import { map_instance } from "@/utils/map/map_instance.js"
-
-// ol
-import { Overlay } from "ol"
-import { transform } from 'ol/proj'
 
 // vue
 import { createApp, h } from 'vue'
@@ -58,7 +53,7 @@ function showDistricServiceDialog(data) {
     currentApp.mount(container)
 }
 
-// 关闭并销毁新增区服务功能模态弹窗
+// 关闭并销毁行政区服务功能模态弹窗
 function destroyDistricServiceDialog() {
     if (currentApp) {
         currentApp.unmount()

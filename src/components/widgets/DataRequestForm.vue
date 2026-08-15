@@ -1,9 +1,10 @@
 <template>
     <el-form 
+        ref="data-request-form"
         :model="props.requestForm" 
-        label-width="auto" 
-        style="max-width: 600px">
-        <el-form-item label="要素分类" style="min-width: 270px; max-width: 300px;">
+        :rules="rules"
+        style="min-width: 270px; max-width: 300px;">
+        <el-form-item label="要素分类" style="min-width: 270px; max-width: 300px;" prop="type">
             <el-select
                 v-model="props.requestForm.type"
                 placeholder="要素分类"
@@ -15,7 +16,7 @@
                     :value="item.value" />
             </el-select>
         </el-form-item> 
-        <el-form-item label="数据图层" style="min-width: 270px; max-width: 300px;">
+        <el-form-item label="数据图层" style="min-width: 270px; max-width: 300px;" prop="layer">
             <el-select
                 v-model="props.requestForm.layer"
                 placeholder="数据图层"
@@ -28,7 +29,7 @@
                     :value="item.value" />
             </el-select>
         </el-form-item> 
-        <el-form-item label="数据格式" style="min-width: 270px; max-width: 300px;">
+        <el-form-item label="数据格式" style="min-width: 270px; max-width: 300px;" prop="format">
             <el-select
                 v-model="props.requestForm.format"
                 placeholder="数据格式"
@@ -44,6 +45,9 @@
 </template>
 
 <script setup>
+// vue
+import { useTemplateRef } from 'vue'
+
 // 自定义组件 Props
 const props = defineProps({
     // 传入组件的表单数据对象
@@ -57,7 +61,7 @@ const props = defineProps({
     },
 })
 
-// 表单选择器的选项关系结构 (数据类型与图层)
+// 表单选择器的选项关系结构 (要素分类与数据图层)
 const dataOptions = [
     {
         label: "地名及注记（A）",
@@ -110,5 +114,25 @@ const formatOptions = [
     {label: "GeoJSON", value:"json"},
     {label: "CSV属性表", value:"csv"},
 ]
+
+// 前端表单验证规则
+const rules = {
+    type: [
+        {required: true, message: "请选择【要素分类】", trigger: 'blur'},
+    ],
+    layer: [
+        {required: true, message: "请选择【数据图层】", trigger: 'blur'},
+    ],
+    format: [
+        {required: true, message: "请选择【数据格式】", trigger: 'blur'},
+    ],
+}
+
+// 暴露表单子组件的验证方法给上级组件
+const dataRequestForm = useTemplateRef("data-request-form")
+defineExpose({
+    validate: (callback) => dataRequestForm.value?.validate(callback),
+    resetFields: () => dataRequestForm.value?.resetFields(),
+})
 
 </script>
