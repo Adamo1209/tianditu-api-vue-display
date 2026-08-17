@@ -23,7 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# token
-src/token.js
+# Environment Variables
+.env
 
+# vercel
 .vercel
