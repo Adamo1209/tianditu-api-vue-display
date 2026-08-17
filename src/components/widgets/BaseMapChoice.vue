@@ -6,7 +6,7 @@
         <el-row :gutter="25" justify="center">
             <el-col :span="10">
                 <img
-                    src="http://lbs.tianditu.gov.cn/images/vec_c.png"
+                    :src="useServiceController('vec_c.png')"
                     style="width: 100%; height: 100%;"/>
             </el-col>
             <el-col :span="14">
@@ -37,7 +37,7 @@
         <el-row :gutter="25" justify="center">
             <el-col :span="10">
                 <img
-                    src="http://lbs.tianditu.gov.cn/images/img_c.png"
+                    :src="useServiceController('img_c.png')"
                     style="width: 100%; height: 100%;"/>
             </el-col>
             <el-col :span="14">
@@ -68,7 +68,7 @@
         <el-row :gutter="25" justify="center">
             <el-col :span="10">
                 <img
-                    src="http://lbs.tianditu.gov.cn/images/ter_c.png"
+                    :src="useServiceController('ter_c.png')"
                     style="width: 100%; height: 100%;"/>
             </el-col>
             <el-col :span="14">
@@ -99,7 +99,7 @@
         <el-row :gutter="25" justify="center">
             <el-col :span="10">
                 <img
-                    src="http://lbs.tianditu.gov.cn/images/ele_c.jpg"
+                    :src="useServiceController('ele_c.jpg')"
                     style="width: 100%; height: 100%;"/>
             </el-col>
             <el-col :span="14">
@@ -129,6 +129,9 @@
 // vue
 import { ref, watch } from "vue"
 import { switch_annotation_global_visual } from "@/utils/map/basemap_layer.js"
+
+// self 
+import { useServiceController } from "@/controller.js"
 
 // 自定义 Props
 defineProps({

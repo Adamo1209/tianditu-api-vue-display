@@ -5,10 +5,13 @@ import { createApp, h } from 'vue'
 import DataDownloadDialog from '@/components/widgets/DataDownloadDialog.vue'
 import ElementPlus from 'element-plus'
 
+// self 
+import { useServiceController } from "@/controller.js"
+
 // 根据数据下载请求表单的内容生成下载链接
 function generateDownloadLink(requestForm) {
     if (requestForm) {
-        return `http://gisserver.tianditu.gov.cn/TDTService/wfs?&request=GetFeature&outputFormat=${requestForm.format}&TYPENAME=${requestForm.layer}`
+        return `${useServiceController("data_download")}?&request=GetFeature&outputFormat=${requestForm.format}&TYPENAME=${requestForm.layer}`
     } else {
         return ""
     }

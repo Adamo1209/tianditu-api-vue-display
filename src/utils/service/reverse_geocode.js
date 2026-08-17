@@ -1,6 +1,7 @@
 // self
-import { tianditu_key } from "../init.js"
-import { map_instance } from "../map/map_instance.js"
+import { tianditu_key } from "@/utils/init.js"
+import { map_instance } from "@/utils/map/map_instance.js"
+import { useServiceController } from "@/controller.js"
 
 // ol
 import { Overlay } from "ol"
@@ -9,7 +10,7 @@ import { transform } from 'ol/proj'
 export function reverse_geocode(latlng_info) {
     let lat = latlng_info["lat"]
     let lng = latlng_info["lng"]
-    let url = `http://api.tianditu.gov.cn/geocoder?postStr={'lon':${lng},'lat':${lat},'ver':1}&type=geocode&tk=${tianditu_key}`
+    let url = `${useServiceController("tianditu_api_geocode")}?postStr={'lon':${lng},'lat':${lat},'ver':1}&type=geocode&tk=${tianditu_key}`
     if (lat && lng) {
         fetch(url)
         .then((response) => response.json())

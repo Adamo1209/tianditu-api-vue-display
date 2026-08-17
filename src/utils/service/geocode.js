@@ -1,13 +1,14 @@
 // self
-import { tianditu_key } from "../init.js"
-import { map_instance } from "../map/map_instance.js"
+import { tianditu_key } from "@/utils/init.js"
+import { map_instance } from "@/utils/map/map_instance.js"
+import { useServiceController } from "@/controller.js"
 
 // ol
 import { Overlay } from "ol"
 import { transform } from 'ol/proj'
 
 export function geocode(address_name) {
-    let url = `http://api.tianditu.gov.cn/geocoder?ds={"keyWord":"${encodeURIComponent(address_name)}"}&tk=${tianditu_key}`
+    let url = `${useServiceController("tianditu_api_geocode")}?ds={"keyWord":"${encodeURIComponent(address_name)}"}&tk=${tianditu_key}`
     fetch(url)
         .then((response) => response.json())
         .then((data) => {

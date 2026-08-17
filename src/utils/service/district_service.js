@@ -1,5 +1,6 @@
 // self
 import { tianditu_key } from "@/utils/init.js"
+import { useServiceController } from "@/controller.js"
 
 // vue
 import { createApp, h } from 'vue'
@@ -10,7 +11,7 @@ import ElementPlus from 'element-plus'
 
 // 行政区服务功能函数
 export function district_service(keyword) {
-    let url = `http://api.tianditu.gov.cn/v2/administrative?keyword=${keyword}&childLevel=${1}&extensions=true&tk=${tianditu_key}`
+    let url = `${useServiceController("tianditu_api_district_service")}?keyword=${keyword}&childLevel=${1}&extensions=true&tk=${tianditu_key}`
     fetch(url)
         .then((response) => response.json())
         .then((data) => {

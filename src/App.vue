@@ -11,6 +11,6 @@
 
 <script setup>
 // self
-import { default_active, fragment_tab } from "./utils/init.js"
+import { default_active, fragment_tab } from "@/utils/init.js"
 
 </script>
