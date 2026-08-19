@@ -1,0 +1,12 @@
+# 基础配置 (通用配置)
+name = "tianditu-http-proxy"
+main = "worker/http_to_https_proxy.js"
+compatibility_date = "2024-01-01"
+
+# 生产环境配置
+[env.production]
+name = "tianditu-http-proxy-prod"
+
+# 开发环境配置
+[env.development]
+name = "tianditu-http-proxy-dev"

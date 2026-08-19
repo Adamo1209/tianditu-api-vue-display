@@ -1,19 +1,5 @@
 {
   "version": 2,
   "trailingSlash": false,
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/proxy/lbs.tianditu.gov.cn/:path*",
-      "destination": "http://lbs.tianditu.gov.cn/:path*"
-    },
-    {
-      "source": "/proxy/gisserver.tianditu.gov.cn/:path*",
-      "destination": "http://gisserver.tianditu.gov.cn/:path*"
-    },
-    {
-      "source": "/proxy/api.tianditu.gov.cn/:path*",
-      "destination": "http://api.tianditu.gov.cn/:path*"
-    }
-  ]
+  "cleanUrls": true
 }
