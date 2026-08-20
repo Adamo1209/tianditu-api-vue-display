@@ -1,8 +1,7 @@
 <template>
     <KeepAlive>
-        <component :is="tab"/>
+        <component :is="tab" style="height: 100%; overflow: auto;"/>
     </KeepAlive>
-    
 </template>
 
 <script setup>

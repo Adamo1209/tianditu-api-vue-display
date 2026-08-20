@@ -1,9 +1,9 @@
 <template>
-    <el-container>
+    <el-container style="height: 100vh; width:100vw; overflow: hidden;">
         <el-aside width="auto">
             <CollapseSidePanel :default_active="default_active"/>
         </el-aside>
-        <el-container style="scroll-behavior: auto;">
+        <el-container>
             <Fragments :tab="fragment_tab"/>
         </el-container>
     </el-container>

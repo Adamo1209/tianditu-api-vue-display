@@ -3,6 +3,22 @@ name = "tianditu-http-proxy"
 main = "worker/http_to_https_proxy.js"
 compatibility_date = "2024-01-01"
 
+# Workers 可观察性
+[observability]
+enabled = false
+head_sampling_rate = 1
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+persist = true
+invocation_logs = true
+
+[observability.traces]
+enabled = false
+persist = true
+head_sampling_rate = 1
+
 # 生产环境配置
 [env.production]
 name = "tianditu-http-proxy-prod"
