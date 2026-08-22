@@ -19,8 +19,8 @@
                 </template>
                 <StaticMapDownloadForm :request-form="staticMapRequestForm" ref="static-map-request-form"/>
                 <template #footer>
-                    <el-button type="primary" @click="">保存</el-button>
-                    <el-button type="danger" @click="">清空</el-button>
+                    <el-button type="primary" @click="saveStaticMapEvent">保存</el-button>
+                    <el-button type="danger" @click="clearStaticMapRequestForm">复位</el-button>
                 </template>
             </el-card>
         </el-col>
@@ -58,13 +58,12 @@ function clearRequestForm() {
 // "下载" 按钮点击事件 (天地图数据下载)
 const form = useTemplateRef("data-request-form")
 function downloadEvent() {
-    if (form?.value?.validate) {
-        form.value.validate((valid, fields) => {
+    if (form.value?.validate) {
+        form.value?.validate((valid, fields) => {
             if (valid) {
                 showDataDownloadDialog(requestForm.value)
             } else {
-                console.log(fields)
-                ElMessage.warning(`请完善表单！`)
+                ElMessage.warning(`请检查表单！`)
             }
         })
     } else {
@@ -76,17 +75,28 @@ function downloadEvent() {
 const staticMapRequestForm = ref({
     width: "400",
     height: "300",
-    center: {
-        lon: "116.39127",
-        lat: "39.90712",
-    },
+    centerLon: "116.39127",
+    centerLat: "39.90712",
     zoom: 10,
     layer: "vec",
     note: true,
 })
 
+// 获取 "static-map-request-form" 子控件
+const staticForm = useTemplateRef("static-map-request-form")
+
 // "清空" 按钮点击事件 (天地图静态地图下载)
+function clearStaticMapRequestForm() {
+    staticForm.value?.resetFields()
+}
 
 // "保存" 按钮点击事件 (天地图静态地图下载)
+function saveStaticMapEvent() {
+    const a = document.createElement('a')
+    a.href = staticForm.value?.staticMapLink
+    a.target = "_blank"
+    a.rel = "noreferrer"
+    a.click()
+}
 
 </script>
